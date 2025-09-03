@@ -2,103 +2,49 @@
 
 Data Scientist based in Germany
 
-[Email](mailto:anirudhparameswaran@gmail.com) / [Medium](https://medium.com) / [LinkedIn](https://www.linkedin.com/in/anirudhparameswaran/) / [GitHub](https://github.com/anirudhparameswaran) / [HuggingFace](https://huggingface.co)
+[Email](mailto:anirudhparameswaran@gmail.com) / [LinkedIn](https://www.linkedin.com/in/anirudhparameswaran/) / [GitHub](https://github.com/anirudhparameswaran) / [HuggingFace](https://huggingface.co/eepyweepy) 
 
-## Engineering experience
+## Professional experience
 
-**Full Stack Developer** @ [AGC Glass Europe](https://www.agc-glass.eu/en/) _(Jun 2024 - Present)_
+**Senior Analyst (Business Intelligence | Product)** @ [Delhivery Ltd., India](https://www.delhivery.com/) _(Nov 2021 - Aug 2024)_
 
-Developing and enhancing an internal AI-driven platform for employees.
+Delhivery is India’s largest logistics and supply chain companies, handling e-commerce and enterprise shipments across 18,000+ pin codes.
+I started here as a Product Analyst working on majorly first mile and last mile processes. Eventually my role expanded to performing analyses on the entire logistics cycle. In 2024 I was promoted to Senior Analyst in the Business Intelligence team where I was building KPI models using mainly regression algorithms and understanding correlation and causation patterns between KPIs.
 
-- Engineered AI-driven features using **LangChain** to integrate with **Elasticsearch** and **LLM APIs** (e.g., OpenAI, Claude), delivering capabilities such as advanced **RAG** for document analysis, deep web research, and image generation for AGC employees.
-- Architected and built **ReAct agents** with **LangGraph** to automate IT support and enhance information retrieval, integrating diverse systems like iTop ticketing, Viva Engage, and multiple vectorstores, thereby centralizing key resources for employees and the IT team.
-- Developed and maintained the robust **Python backend** for the AI-driven internal application using **FastAPI**, ensuring efficient API communication for all AI features and agentic systems.
-- Implemented comprehensive logging and monitoring for AI systems using **Elasticsearch** to ensure system observability, track performance, and facilitate troubleshooting.
-- **Technologies used:** Python, FastAPI, LangChain, LangGraph, ReAct, RAG, LLM APIs (OpenAI, Claude), Elasticsearch, Redis, React.js, TypeScript, Docker, Git.
+- Delivered KPI Sensitivity Playbook ranking 50+ KPIs, based on correlation analysis, adopted by 200+ centers across product and
+operations.
+- Automated embargo flagging using simple conditions, worked with stakeholders throughout. Published results via S3-hosted
+dashboards reducing manual reviews by 90%.
+- Used time-series clustering & features attribution to trace delay causes across 70+ lanes, and automated RCA for weekly ops reviews.
+- Delivered ops self-serve analytics suite using AWS Quicksight, built tools to flag vehicle underutilization and reduce adhoc booking
+costs.
+- Designed and maintained pipelines for seller performance analysis, improving seller engagement CTR from 3% to 20%.
 
-**AI Engineer** @ [AI-Inside Private](https://www.ai-inside-private.com/) _(Jun 2024 - May 2025)_
+- **Technologies used:** Python, SQL, DataBricks, AWS (QuickSight & S3), Microsoft Excel, Git.
 
-Delivered AI and full-stack solutions for various client projects.
+**Product Analyst** @ [Octathorpe Web Consultants Pvt. Ltd., India ](https://hitwicket.com/) _(Dec 2019 - Oct 2021)_
 
-- Developed and deployed multiple full-stack web applications utilizing **Vue.js** for responsive frontends and **Python** with **FastAPI** for backend APIs.
-- Developed and trained **Deep Learning models** using **PyTorch** for automated visual classification of industrial parts, improving quality control processes.
-- Integrated Pinia for state management in Vue.js applications and utilized Redis for caching.
-- Processed and analyzed geospatial data for mapping applications.
-- Designed and built dashboards using Power BI.
-- **Technologies used:** Python, FastAPI, PyTorch, Vue.js, Pinia, Redis, PostgreSQL, Power BI, Docker.
+Octathorpe is the company behind Hitwicket, a mobile strategy game that was featured by Tim Cook for its innovation in the gaming space.
+I started my stint here as an intern, which then got converted to a full-time position. My role here involved conducted anaylsis on our user base to discover insights about how they engage with the game. This data was then combined with market research to improve upon game features, while building robust documentation around it.
 
-**Researcher (End-of-Studies Internship)** @ [CESI Lineact](https://www.cesi.fr/recherche-innovation/lineact/) _(Feb 2024 - Jul 2024)_
+- Designed hyper-personalized offer ladder for elder (d60+) users based on engagement data - increased ARPU by ₹0.5/user
+- Built in-house A/B Testing platform using SQL, Python and HTML for rapid product experimentation
+- Created weekly reports using Google Analytics, internal analytics platform and querying raw data using Python on users' social
+activities - improved retention of socially engaged users by 20%
+- Conducted user interviews to combine with data to build product knowledge documents
+- **Technologies used:** Python, SQL, Google Analytics.
 
-Contributed to a project on innovative methods for energetically and economically evaluating buildings for urban decarbonization.
+**Awards & Recognition**
 
-- Integrated artificial intelligence into decarbonization strategies, focusing on deep learning and techno-economic models to optimize photovoltaic integration in building designs.
-- Conducted research and analysis on ten buildings between Strasbourg and Paris campuses.
-- **Technologies used:** Python, Deep Learning, Machine Learning, Data Analysis, Research.
-
-## Open Source contributions
-
-For a complete overview of my open source contributions, check [this GitHub search query](https://github.com/search?q=is%3Apr+author%3Aimadsaddik+is%3Amerged+-user%3Aimadsaddik+is%3Apublic&type=pullrequests). Below is the same information organized by year.
-
-### 2025
-
-- [Fixed a small typo in context_precision.md](https://github.com/explodinggradients/ragas/pull/2166) _(Ragas)_
-- [Fixed the incorrect link to the 20B model in gpt-oss.md](https://github.com/huggingface/hub-docs/pull/1862) _(Hugging Face)_
-- [Removed unnecessary character from the kNN query documentation](https://github.com/elastic/elasticsearch/pull/130120) _(Elasticsearch)_
-- [Fixed grammar & spelling in Unit 2](https://github.com/huggingface/mcp-course/pull/42) _(Hugging Face)_
-- [Fixed grammar in multiple files](https://github.com/huggingface/mcp-course/pull/34) _(Hugging Face)_
-- [Fix grammar in Unit 2.3 - Document Analysis Graph](https://github.com/huggingface/agents-course/pull/447) _(Hugging Face)_
-- [Added the BoDmagh dataset in the general text corpora](https://github.com/UM6P-EMINES/Awesome-Darija-Arabic-NLP-Resources/pull/10) _(Awesome Darija Arabic NLP Resources)_
-- [Contributed more translations in 62.csv](https://github.com/darija-open-dataset/dataset/pull/204) _(Darija Open Dataset)_
-- [Dashboard to track the progress](https://github.com/darija-open-dataset/dataset/pull/202) _(Darija Open Dataset)_
-- [Worked on few rows on the 62nd file](https://github.com/darija-open-dataset/dataset/pull/200) _(Darija Open Dataset)_
-
-### 2024
-
-- [Fixed the code snippet in the Update State From Tools tutorial](https://github.com/langchain-ai/langgraph/pull/2752) _(LangGraph)_
-- [Fixed the documentation for the persistence concept](https://github.com/langchain-ai/langgraph/pull/2750) _(LangGraph)_
-- [Fixed hyperlink in search.asciidoc](https://github.com/elastic/elasticsearch/pull/115156) _(Elasticsearch)_
-- [File 62 - Contribution N1](https://github.com/darija-open-dataset/dataset/pull/164) _(Darija Open Dataset)_
-
-## Accomplishments
-
-- **First Best Paper Award** @ [ICRERA 2024 — 13th International Conference on Renewable Energy Research and Applications](https://www.icrera.org/archieve2024/)
-  _Awarded in November 2024_
-  
-  [Read the paper on IEEE Xplore](https://ieeexplore.ieee.org/document/10815288)
-  ![Best Paper Award ICRERA 2024](./images/best_paper_award_icrera.png)
-
-- **Published an article** in the _Solar Energy Journal_ (Vol. 297, 2025, 113567).
-
-  **Title**: Lightweight Deep Learning for Photovoltaic Energy Prediction : Optimizing Decarbonization in Winter Houses.
-  [Read the article on ScienceDirect](https://www.sciencedirect.com/science/article/abs/pii/S0038092X25003305)
-
-- **Built [My Universe Hub](https://myuniversehub.com/)** – A personal website reimagining NASA’s APOD with a modern and interactive UI using **Vue.js** and **Django**.
-
-- **Created a course on training LLMs from scratch** on FreeCodeCamp \
-  Covers the full lifecycle of LLMs: data encoding, tokenizers, pretraining, and fine-tuning.
-  [Watch the course](https://www.youtube.com/watch?v=9Ge0sMm65jo&t)
-
-- **Created a course on the evolution of the Transformer architecture** on FreeCodeCamp \
-  Covers the different attention methods, positional encoding methods, activation functions, and more.
-  [Watch the course](https://www.youtube.com/watch?v=8WBS0dT0h2I&t=1202s)
-
-- **Created a course on Elasticsearch** on FreeCodeCamp \
-  Teaches core concepts, indexing, querying, and practical integrations.
-  [Watch the course](https://www.youtube.com/watch?v=a4HBKEda_F8)
-
-- **Created an OSRM (Open Source Routing Machine) course** on 3CodeCamp \
-  Intro to OSRM architecture, routing basics, and building navigation apps.
-  [Watch the course](https://www.youtube.com/watch?v=Ke_NISW-bDM&list=PLMSb3cZXtIfoT7duU9eAdpmcnDq2rINUJ&index=1&t)
+$$1^{st}$$ place Code Sense IoT Hackathon (VIT Chennai, 2018)
+$$1^{st}$$ place DevMerge Pitch + AI & Blockchain Hackathon (IIT Madras, 2018)
+$$10^{th}$$ place ABU National RoboCon 2017
+Writer & Director, Dramatics Club (VIT Chennai, 2019)
 
 ## Certifications
 
-- **[Deep Learning Specialization](https://www.credly.com/badges/d50e8839-e5cd-40b4-b299-2470c2096db0/print)** - _DeepLearning.AI_
-
 - **Fundamentals of Agents** - _Hugging Face_
-  ![Fundamentals of Agents Certificate](./images/smol_agents_certificate.png)
-
-- **Fundamentals of MCP** - _Hugging Face_
-  ![Fundamentals of MCP Certificate](./images/mcp_certificate.png)
+  ![Fundamentals of Agents Certificate](https://cas-bridge.xethub.hf.co/xet-bridge-us/67a47037749ea2c4b9fafd4b/4c1c05e363d7723bff8d9bc094bd56dcb0077de249d2fa698d44629b44d89a67?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=cas%2F20250903%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250903T094703Z&X-Amz-Expires=3600&X-Amz-Signature=2db70c11f0d276e8015608a85553cb097fef56d5a2e8cbe4785ae0bdd45cfcbf&X-Amz-SignedHeaders=host&X-Xet-Cas-Uid=6650fc2174664a42dd08cc56&response-content-disposition=inline%3B+filename*%3DUTF-8%27%272025-09-01.png%3B+filename%3D%222025-09-01.png%22%3B&response-content-type=image%2Fpng&x-id=GetObject&Expires=1756896423&Policy=eyJTdGF0ZW1lbnQiOlt7IkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc1Njg5NjQyM319LCJSZXNvdXJjZSI6Imh0dHBzOi8vY2FzLWJyaWRnZS54ZXRodWIuaGYuY28veGV0LWJyaWRnZS11cy82N2E0NzAzNzc0OWVhMmM0YjlmYWZkNGIvNGMxYzA1ZTM2M2Q3NzIzYmZmOGQ5YmMwOTRiZDU2ZGNiMDA3N2RlMjQ5ZDJmYTY5OGQ0NDYyOWI0NGQ4OWE2NyoifV19&Signature=Nkx63Vj%7EJIJKKwJ6%7EuC0zHIZjNHsfwnDdSicEr1v2PlMHIdCpassw3sZQvAWuh1i6I6v9ncy6w7BloVzQj51sWt1tPpSyB993MguXFgGjFd4Q-bpIGxnuoXhg6fVUhI88MTzTJm5D%7EE8Ijs7jXOoS-LiWZ-3lGMMj7mCOCT2yrL30ztOYEeBmwLe5MWmhxt-ll1zCwgA2htnotiSYh9fVZe75TiZL3kQXuLHkOKpwmZftptEIWgWjb6Z-ZYa%7EjyZ7izzOEWAzvlw8gTV7crsi%7ElrReB1uMdNSfPYO-ReZkx7bhkMBR563CAp0IrdLHgNABEySsoRc9r19js44jigQg__&Key-Pair-Id=K2L8F4GPSG1IFC)
 
 ## Education
 
@@ -110,5 +56,5 @@ For a complete overview of my open source contributions, check [this GitHub sear
 
 ## Languages
 
-🇺🇸 **English - Native**  
-🇫🇷 **German - B1**
+**English - Native**  
+**German - B1**
