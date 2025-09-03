@@ -32,14 +32,15 @@ I started my stint here as an intern, which then got converted to a full-time po
 - Created weekly reports using Google Analytics, internal analytics platform and querying raw data using Python on users' social
 activities - improved retention of socially engaged users by 20%
 - Conducted user interviews to combine with data to build product knowledge documents
+  
 - **Technologies used:** Python, SQL, Google Analytics.
 
 **Awards & Recognition**
 
-$$1^{st}$$ place Code Sense IoT Hackathon (VIT Chennai, 2018)
-$$1^{st}$$ place DevMerge Pitch + AI & Blockchain Hackathon (IIT Madras, 2018)
-$$10^{th}$$ place ABU National RoboCon 2017
-Writer & Director, Dramatics Club (VIT Chennai, 2019)
+- 1st place Code Sense IoT Hackathon (VIT Chennai, 2018)
+- 1st place DevMerge Pitch + AI & Blockchain Hackathon (IIT Madras, 2018)
+- 10th place ABU National RoboCon 2017
+- Writer & Director, Dramatics Club (VIT Chennai, 2019)
 
 ## Certifications
 
@@ -57,4 +58,4 @@ Writer & Director, Dramatics Club (VIT Chennai, 2019)
 ## Languages
 
 **English - Native**  
-**German - B1**
+**German - A2*
