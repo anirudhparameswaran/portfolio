@@ -58,4 +58,4 @@ activities - improved retention of socially engaged users by 20%
 ## Languages
 
 **English - Native**  
-**German - A2*
+**German - A2**
