@@ -6,7 +6,7 @@ Data Scientist based in Germany
 
 ## Professional experience
 
-**Senior Analyst (Business Intelligence | Product)** @ [Delhivery Ltd., India](https://www.delhivery.com/) _(Nov 2021 - Aug 2024)_
+**Senior Analyst (Business Intelligence, Product)** @ [Delhivery Ltd., India](https://www.delhivery.com/) _(Nov 2021 - Aug 2024)_
 
 Delhivery is India’s largest logistics and supply chain companies, handling e-commerce and enterprise shipments across 18,000+ pin codes.
 I started here as a Product Analyst working on majorly first mile and last mile processes. Eventually my role expanded to performing analyses on the entire logistics cycle. In 2024 I was promoted to Senior Analyst in the Business Intelligence team where I was building KPI models using mainly regression algorithms and understanding correlation and causation patterns between KPIs.
