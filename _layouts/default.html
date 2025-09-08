@@ -8,85 +8,11 @@
 </head>
 <body>
 
-<<<<<<< HEAD
-{% seo %}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
-    <link rel="stylesheet" href="{{ '/assets/css/dark.css' | relative_url }}" id="dark-mode-stylesheet">
-    <style>
-      /* Move dark mode button to upper right */
-      .theme-toggle-container {
-        position: absolute;
-        top: 20px;
-        right: 30px;
-        z-index: 100;
-      }
-      /* Increase main text box width */
-      .wrapper {
-        max-width: 1500px;
-      }
-      @media (max-width: 1200px) {
-        .wrapper {
-          max-width: 95vw;
-        }
-      }
-    </style>
-    <!--[if lt IE 9]>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <![endif]-->
-    {% include head-custom.html %}
-  </head>
-  <body>
-    <div class="wrapper" style="position:relative;">
-      <div class="theme-toggle-container">
-        <button id="theme-toggle-button" style="background-color: #f0f0f0; border: none; border-radius: 8px; padding: 10px 15px; font-size: 1.1em; cursor: pointer; color: #333; display: flex; align-items: center; gap: 0.5em;">
-          <span id="theme-toggle-icon" class="fa fa-moon-o"></span>
-          <span id="theme-toggle-label">Dark Mode</span>
-        </button>
-      </div>
-      <header>
-        <h1><a href="{{ "/" | absolute_url }}">{{ site.title | default: site.github.repository_name }}</a></h1>
-				
-        {% if site.logo %}
-          <img src="{{site.logo | relative_url}}" alt="Logo" />
-        {% endif %}
-
-        <p>{{ site.description | default: site.github.project_tagline }}</p>
-
-        {% if site.github.is_project_page %}
-        <p class="view"><a href="{{ site.github.repository_url }}">View the Project on GitHub <small>{{ site.github.repository_nwo }}</small></a></p>
-        {% endif %}
-
-        {% if site.github.is_user_page %}
-        <p class="view"><a href="{{ site.github.owner_url }}">View My GitHub Profile</a></p>
-        {% endif %}
-				
-        {% if site.show_downloads %}
-        <ul class="downloads">
-          <li><a href="{{ site.github.zip_url }}">Download <strong>ZIP File</strong></a></li>
-          <li><a href="{{ site.github.tar_url }}">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="{{ site.github.repository_url }}">View On <strong>GitHub</strong></a></li>
-        </ul>
-        {% endif %}
-      </header>
-      <section>
-
-      {{ content }}
-
-      </section>
-      <footer>
-        {% if site.github.is_project_page %}
-        <p>This project is maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a></p>
-        {% endif %}
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
-=======
   <header>
     <div class="logo">Anirudh Parameswaran</div>
     <div class="menu">
       <button class="theme-toggle" id="themeToggle">☀️</button>
       <div class="menu-btn">Menu</div>
->>>>>>> 5365c1f (customized whole website)
     </div>
   </header>
 
@@ -185,28 +111,5 @@
     });
   </script>
 
-<<<<<<< HEAD
-      themeToggleButton.addEventListener('click', () => {
-        const currentTheme = localStorage.getItem('theme') || (darkModeStylesheet.disabled ? 'light' : 'dark');
-        if (currentTheme === 'dark') {
-          setTheme('light');
-        } else {
-          setTheme('dark');
-        }
-      });
-
-      document.addEventListener('DOMContentLoaded', () => {
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme) {
-          setTheme(savedTheme);
-        } else {
-          setTheme('dark');
-        }
-      });
-    </script>
-  </body>
-</html>
-=======
 </body>
 </html>
->>>>>>> 5365c1f (customized whole website)
