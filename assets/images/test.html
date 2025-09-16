@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Report: Simulation Based Inference</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: #fff;
+            padding: 20px 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        h1 {
+            text-align: center;
+        }
+        .author-info {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .author-info p {
+            margin: 5px 0;
+            color: #7f8c8d;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .section-header {
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+        }
+        .figure {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .figure img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .figure-caption {
+            font-style: italic;
+            color: #555;
+            margin-top: 10px;
+        }
+        .report-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        .report-table th, .report-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        .report-table th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        .list-unstyled {
+            list-style-type: none;
+            padding: 0;
+        }
+        .list-unstyled li {
+            margin-bottom: 10px;
+        }
+        .math-eq {
+            display: block;
+            text-align: center;
+            margin: 20px 0;
+            font-style: italic;
+        }
+        .page-break {
+            height: 1px;
+            background-color: #ccc;
+            margin: 40px 0;
+        }
+    </style>
+</head>
+<body>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+
+    <div class="container">
+        <h1>Project Report: Simulation Based Inference</h1>
+        <div class="author-info">
+            [cite_start]<p>Anirudh Parameswaran, 264787 [cite: 3]</p>
+            [cite_start]<p>Gautam Dilip Hariharan, 230237 [cite: 4]</p>
+            [cite_start]<p>August 17, 2025 [cite: 5]</p>
+            [cite_start]<p>TU Dortmund University [cite: 6]</p>
+        </div>
+
+        <div class="section">
+            [cite_start]<h2 class="section-header">1 Introduction [cite: 10]</h2>
+            [cite_start]<p>The speed-accuracy tradeoff in cognitive tasks is essential for understanding decision-making under time pressure[cite: 11]. Previous research by Katsimpokis et al. (2020) [cite_start]found that linear collapsing boundaries were a better fit for deadline conditions compared to fixed boundaries[cite: 12, 14]. [cite_start]These researchers used Evidence Accumulation Models to simulate the brain's decision-making process[cite: 13]. [cite_start]There is a potential for non-linear collapsing boundaries to more realistically capture urgency effects[cite: 15]. This project report discusses the effect of using an exponentially collapsing decision boundary to explain decision-making, based on empirical data collected by Katsimpokis et al. (2020) [cite_start][cite: 16]. [cite_start]The report investigates whether an exponentially collapsing boundary improves the fit to Speed-Accuracy-Tradeoff model data compared to linear or fixed models[cite: 17]. [cite_start]We used Bayesflow to simulate trials and to understand the challenges in recovering parameters like drift rate, initial boundary threshold, and exponential decay rate[cite: 18].</p>
+        </div>
+
+        <div class="section">
+            [cite_start]<h2 class="section-header">2 Data [cite: 19]</h2>
+            [cite_start]<p>The dataset for this project was obtained from the OSF repository, which was linked in the Katsimpokis et al., 2020 paper[cite: 20]. [cite_start]The original study involved three experiments on speed-accuracy tradeoffs (SAT)[cite: 20]. [cite_start]Experiments 1 and 2 each had 24 participants, with a different set of 24 participants in Experiment 3[cite: 21]. [cite_start]The participants, aged 22-23 years (60% female), were given monetary compensation or research credits[cite: 21]. [cite_start]All experiments included a training phase to familiarize participants with the task, followed by a test phase where SAT manipulations were applied and data was collected[cite: 22].</p>
+            [cite_start]<p>Experiment 1, called the Random Dot Motion task, required participants to determine the direction of motion of dots on a screen[cite: 23]. [cite_start]Experiment 2, the Flash task, had participants decide which of two circles flashed faster[cite: 24]. [cite_start]The test phases for both Experiment 1 and 2 used a 2x2 within-subjects design[cite: 25]. [cite_start]The first factor was whether participants were cued to respond fast or accurately, and the second was whether a response deadline was present or not[cite: 26, 27]. [cite_start]This created four conditions: speed cue with deadline, speed cue without deadline, accuracy cue with deadline, and accuracy cue without deadline[cite: 28]. [cite_start]The order of these four conditions was counterbalanced across participants[cite: 29]. [cite_start]Each of the four conditions consisted of 200 trials, for a total of 800 trials in the test phase[cite: 31]. [cite_start]Experiment 3 was included to address the possibility that Experiment 2 was too fast for some participants, and it included early and late deadlines[cite: 32]. [cite_start]Consequently, the design was a 2x3 within-subjects design with two levels for cue-based SAT and three for deadline-based SAT (early, late, and no deadline)[cite: 33].</p>
+            <div class="figure">
+                <table class="report-table">
+                    [cite_start]<caption>Table 1: Experiment design for experiments 1 & 2 [cite: 37]</caption>
+                    <thead>
+                        <tr>
+                            [cite_start]<th>Factor [cite: 38]</th>
+                            [cite_start]<th>Level [cite: 38]</th>
+                            [cite_start]<th>Instruction [cite: 38]</th>
+                            [cite_start]<th>Feedback [cite: 38]</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            [cite_start]<td>Cue [cite: 38]</td>
+                            [cite_start]<td>Speed [cite: 38]</td>
+                            [cite_start]<td>"Focus on being as speedy as possible" [cite: 38]</td>
+                            <td>"Good time!" (if fast enough) or "Faster!" (if too slow) [cite_start][cite: 38]</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            [cite_start]<td>Accuracy [cite: 38]</td>
+                            [cite_start]<td>"Focus on giving as many accurate responses as possible" [cite: 38]</td>
+                            <td>"Correct!" (correct) or "Be more accurate!" (incorrect) [cite_start][cite: 38]</td>
+                        </tr>
+                        <tr>
+                            [cite_start]<td>Deadline [cite: 38]</td>
+                            [cite_start]<td>Deadline [cite: 38]</td>
+                            [cite_start]<td>"Strict deadlines will apply" [cite: 38]</td>
+                            <td>"You missed the deadline!" (no response before deadline) [cite_start][cite: 38]</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            [cite_start]<td>No deadline [cite: 38]</td>
+                            [cite_start]<td>"There will be no deadline for your answer" [cite: 38]</td>
+                            [cite_start]<td>(nil) [cite: 38]</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="section">
+            [cite_start]<h2 class="section-header">3 Statistical Model [cite: 39]</h2>
+            [cite_start]<p>Since the trials in the dataset do not have an explicit time-series component, each trial can be treated as an independent observation[cite: 40]. [cite_start]Our goal is to estimate decision-making parameters under different cue and deadline conditions[cite: 41]. [cite_start]This allows us to consider each trial, regardless of the participant, as an independent data point[cite: 42].</p>
+            
+            [cite_start]<h3 class="section-header">3.1 The Drift Diffusion Model [cite: 43]</h3>
+            [cite_start]<p>We used the Drift Diffusion Model (DDM) as the foundational evidence accumulation framework[cite: 44]. [cite_start]The DDM posits that decisions are the result of a noisy process where evidence accumulates over time until it reaches a decision threshold, or boundary[cite: 45]. [cite_start]As seen in Figure 1, this process involves the continuous accumulation of evidence with noise[cite: 46]. Mathematically, the change in accumulated evidence over a small time-step $dt$ is given by:</p>
+            <div class="math-eq">
+                $$dx=\nu\cdot dt+\sqrt{dt}\cdot\mathcal{N}(0,1)$$
+            </div>
+            [cite_start]<p>Here, $ν$ is the drift rate, which represents the average rate of evidence accumulation, and the noise term $\mathcal{N}(0,1)$ captures random fluctuations[cite: 50, 51]. [cite_start]A decision is made when the accumulated evidence reaches either the upper boundary (e.g., choice A) or the lower boundary (e.g., choice B)[cite: 52]. [cite_start]Higher drift rates result in faster and more accurate decisions, while lower drift rates lead to slower and less accurate ones[cite: 53]. [cite_start]For this model, we used a simplified DDM without inter-trial variability in the drift rate or starting point[cite: 54]. [cite_start]We restricted our estimation to three parameters: [cite: 55]</p>
+            <ul class="list-unstyled">
+                [cite_start]<li>• $v$: Drift rate (evidence quality) [cite: 56]</li>
+                [cite_start]<li>• $k$: Exponential decay rate of the boundary over time [cite: 57]</li>
+                [cite_start]<li>• $a_{0}$: Initial boundary height [cite: 58]</li>
+            </ul>
+
+            [cite_start]<h3 class="section-header">3.2 Exponential Boundary Collapse [cite: 62]</h3>
+            [cite_start]<p>While the standard DDM uses fixed decision boundaries, the effective boundary height may decrease over time under time pressure, a phenomenon known as collapsing boundaries[cite: 63]. [cite_start]Previous research has used a linear collapse model[cite: 64]. [cite_start]However, human decision urgency often increases non-linearly under deadlines[cite: 64]. [cite_start]We implemented an exponential boundary collapse function defined as: [cite: 65, 67]</p>
+            <div class="math-eq">
+                $$a(t)=\alpha_{0}\cdot(1-e^{k\cdot(t_{max}-t)})$$
+            </div>
+            [cite_start]<p>where: [cite: 66]</p>
+            <ul class="list-unstyled">
+                [cite_start]<li>• $\alpha_{0}$ is the initial boundary height at $t=0$ [cite: 69]</li>
+                [cite_start]<li>• $k$ is the decay constant that controls the rate of collapse [cite: 70]</li>
+                [cite_start]<li>• $t$ is the elapsed decision time [cite: 71]</li>
+                [cite_start]<li>• $t_{max}$ is the upper limit for the decision time [cite: 72]</li>
+            </ul>
+            [cite_start]<p>This function allows for a slower initial decline in boundary height, followed by a sharper drop as time goes on, which may be a better reflection of how decisions are made under deadlines[cite: 73].</p>
+
+            [cite_start]<h3 class="section-header">3.3 Priors [cite: 74]</h3>
+            <p>Based on the findings of Katsimpokis et al. (2020) [cite_start]and existing literature on the DDM [cite: 75][cite_start], we set informative priors for the parameters, as shown in Table 2[cite: 75]. [cite_start]These priors were also determined through experimentation with the DDM to ensure that response times and accuracy closely matched the data[cite: 75]. [cite_start]The base Gaussian and Gamma distributions were modified with cutoffs and spread conditions by multiplying and adding scalar values[cite: 76].</p>
+            <div class="figure">
+                <table class="report-table">
+                    [cite_start]<caption>Table 2: Prior distributions for model parameters [cite: 77]</caption>
+                    <thead>
+                        <tr>
+                            [cite_start]<th>Parameter [cite: 78]</th>
+                            [cite_start]<th>Description [cite: 78]</th>
+                            [cite_start]<th>Prior [cite: 78]</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            [cite_start]<td>$v$ [cite: 78]</td>
+                            [cite_start]<td>Drift rate (evidence quality) [cite: 78]</td>
+                            [cite_start]<td>$\nu\sim5\times\mathcal{N}(\mu=0.5,\sigma^{2}=0.5)$ [cite: 78]</td>
+                        </tr>
+                        <tr>
+                            [cite_start]<td>$k$ [cite: 78]</td>
+                            [cite_start]<td>Exponential decay rate [cite: 78]</td>
+                            [cite_start]<td>$k\sim-1-0.5\times X$ $X\sim\Gamma(shape=2$, scale $=0.5$) [cite: 78]</td>
+                        </tr>
+                        <tr>
+                            [cite_start]<td>$a_{0}$ [cite: 78]</td>
+                            [cite_start]<td>Initial boundary height [cite: 78]</td>
+                            [cite_start]<td>$\alpha_{0}\sim1.85+0.1\times X$ $X\sim\Gamma(shape=2$, scale $=0.5$) [cite: 78]</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="section">
+            [cite_start]<h2 class="section-header">4 Approximator [cite: 79]</h2>
+            [cite_start]<p>The inference framework was implemented using the BayesFlow library, which separates the parameter inference process into two neural components: a summary network and an inference network[cite: 80]. [cite_start]We used a DeepSet architecture for the summary network, which is well-suited for handling trial-level data in an order-invariant manner, ensuring the network is not affected by the order of trials within a condition[cite: 81]. [cite_start]The DeepSet network had 8 layers and a Gaussian base distribution[cite: 104]. [cite_start]A dropout rate of 0.1 was set to prevent overfitting[cite: 104].</p>
+            [cite_start]<p>The inference network was a FlowMatching normalizing flow model, which transforms the base Gaussian distribution in the parameter space into the learned posterior distribution over the parameters[cite: 105]. [cite_start]This flow component consisted of 8 coupling layers[cite: 106]. [cite_start]Normalizing flows were chosen because they can approximate flexible, non-Gaussian posterior distributions, which is important for drift-diffusion models where parameter posteriors can be skewed[cite: 106]. [cite_start]The initial learning rate was set to 0.001, and all inputs ($v, k, a_{0}$) and the response time output were standardized using the default method[cite: 107].</p>
+            
+            <div class="figure">
+                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBAUEBAYFBQUGBgYHCgwLCggyMiAhtAIBICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgI" alt="Evidence Accumulation - DDM Model graphic">
+                [cite_start]<p class="figure-caption">Figure 1: Evidence Accumulation - DDM Model graphic [cite: 103]</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            [cite_start]<h2 class="section-header">5 Training [cite: 108]</h2>
+            [cite_start]<p>The training dataset was composed of 5000 samples, with each sample containing 200 trials[cite: 109]. [cite_start]The model was trained for 50 epochs on this pre-generated dataset using a batch size of 100[cite: 110]. [cite_start]An offline training approach was used because simulating the exponential-boundary DDM is computationally expensive[cite: 111]. [cite_start]The datasets were generated once and then stored, allowing for experimentation with different network architectures without having to perform repeated simulations[cite: 112]. [cite_start]BayesFlow uses the Adam optimizer by default, which was the optimizer used for this project[cite: 113].</p>
+        </div>
+
+        <div class="section">
+            [cite_start]<h2 class="section-header">6 Diagnostics [cite: 114]</h2>
+            [cite_start]<p>The training process showed a consistent decrease in loss, which is shown in Figure 4, indicating that the inference network converged stably[cite: 115]. [cite_start]However, a closer look at the empirical cumulative distribution function (ECDF) plots in Figure 6 reveals that the drift rate parameter, $v$, deviates slightly from the 95% confidence interval, which suggests mild overfitting[cite: 116]. [cite_start]The ground truth vs. estimate plots in Figure 5 show that while $v$ was successfully recovered, the exponential decay rate ($k$) and the initial boundary height ($a_{0}$) could not be estimated reliably[cite: 120]. [cite_start]The posterior z-score contraction plots in Figure 3 indicate a systematic bias for $v$, but it is still within acceptable limits[cite: 121]. [cite_start]In contrast, $k$ and $a_{0}$ showed little to no learnable structure[cite: 122]. [cite_start]Exploratory data analysis in Figure 2 supports these findings, showing a clear relationship between $v$ and response times, but no such dependency is evident for $k$[cite: 123]. [cite_start]This implies that while the model is sensitive to the drift rate, it has difficulty capturing the dynamics of collapsing boundaries introduced by $k$ and $a_{0}$[cite: 123].</p>
+            <div class="figure">
+                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBAUEBAYFBQUGBgYHCgwLCggyMiAhtAIBICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgI" alt="Exploratory Data Analysis Plots">
+                [cite_start]<p class="figure-caption">Figure 2: Exploratory Data Analysis Plots [cite: 252]</p>
+            </div>
+            <div class="figure">
+                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBAUEBAYFBQUGBgYHCgwLCggyMiAhtAIBICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgI" alt="Diagnostic Plots">
+                [cite_start]<p class="figure-caption">Figure 3: Posterior z-score, Figure 4: Loss curve, Figure 5: Ground Truth vs Estimate [cite: 296, 314, 343]</p>
+            </div>
+        </div>
+
+        <div class="section">
+            [cite_start]<h2 class="section-header">7 Inference [cite: 124]</h2>
+            [cite_start]<p>The posterior distributions (Figure 7) show consistent trends across all experimental conditions[cite: 125]. [cite_start]The estimated $v$ is highest in the speed cue with deadline condition, followed by the accuracy cue with deadline, and is lowest in the no-deadline conditions[cite: 126]. This is consistent with the behavioral results reported by Katsimpokis et al. (2020)[cite_start], which validates that the drift rate reliably captures task-induced urgency effects[cite: 127]. [cite_start]In contrast, the posterior estimates for $k$ and $a_{0}$ did not change across conditions, suggesting that the inference network was unable to distinguish between the effects of high and low values of these parameters, possibly because a relationship does not exist[cite: 128]. [cite_start]This limits the explanatory power of the exponential boundary collapse in its current implementation[cite: 129]. [cite_start]Posterior predictive checks (Figure 8) indicate that the model captures the response time distributions well, but struggles to correctly reproduce response accuracy[cite: 130].</p>
+            <div class="figure">
+                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBAUEBAYFBQUGBgYHCgwLCggyMiAhtAIBICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgI" alt="Full Inference Plots">
+                [cite_start]<p class="figure-caption">Figure 6: ECDF, Figure 7: Full Inference [cite: 394, 490]</p>
+            </div>
+            <div class="figure">
+                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBAUEBAYFBQUGBgYHCgwLCggyMiAhtAIBICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgI" alt="Posterior Predictive Check Plots">
+                [cite_start]<p class="figure-caption">Figure 8: Posterior Predictive Check [cite: 517]</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            [cite_start]<h2 class="section-header">8 Limitations & Potential Improvements [cite: 131]</h2>
+            
+            [cite_start]<h3 class="section-header">Limitations [cite: 132]</h3>
+            <ul class="list-unstyled">
+                [cite_start]<li>• **Weak signal in boundary parameters**: While the drift rate ($v$) could be recovered, both the exponential decay rate ($k$) and the initial boundary height ($a_{0}$) showed poor identifiability[cite: 133]. [cite_start]Simulations confirm that their effects only appear late in the trial, which makes them difficult to differentiate from noise[cite: 134].</li>
+                [cite_start]<li>• **Collusion of $k$ and $a_{0}$**: The parameterization of the collapsing boundary creates trade-offs between $k$ and $a_{0}$, which limits their interpretability[cite: 135].</li>
+                [cite_start]<li>• **Priors not fully informed by expertise**: The priors for $k$ and $a_{0}$ were chosen heuristically[cite: 136]. [cite_start]Without strong expert or empirical constraints, inference for these parameters is less stable[cite: 137].</li>
+            </ul>
+
+            [cite_start]<h3 class="section-header">Potential Improvements [cite: 138]</h3>
+            <ul class="list-unstyled">
+                [cite_start]<li>• **Hierarchical inference**: Extending SBI to a hierarchical framework across subjects and conditions could pool information more efficiently, which would improve the recovery of weakly identified parameters[cite: 139, 518].</li>
+                [cite_start]<li>• **Alternative boundary formulations**: Incorporating urgency gating or sigmoid-shaped collapse functions could produce more realistic urgency effects compared to the exponential form[cite: 519].</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            [cite_start]<h2 class="section-header">9 Conclusion [cite: 520]</h2>
+            [cite_start]<p>This project demonstrated how Simulation-Based Inference (SBI) can be applied to study decision-making models that use collapsing boundaries[cite: 521]. [cite_start]The method successfully recovered the drift rate ($v$), which aligned with behavioral manipulations across speed-accuracy tradeoff conditions[cite: 522]. [cite_start]This confirms SBI's ability to capture dominant cognitive signals[cite: 522]. [cite_start]However, the recovery of the exponential boundary parameters ($k, a_{0}$) was found to be unreliable[cite: 523]. [cite_start]Simulation results confirmed that their behavioral signatures are weak and often confounded, which limits their explanatory power[cite: 524]. [cite_start]This highlights a key challenge in SBI: while it is powerful in settings where likelihoods are intractable, the inference depends critically on parameter identifiability and prior specification[cite: 525]. [cite_start]In summary, while SBI shows great promise for cognitive modeling, the dynamics of collapsing boundaries remain difficult to recover[cite: 526]. [cite_start]Future research should explore hierarchical inference, alternative collapse formulations, and stronger prior integration to improve recovery beyond the drift rate[cite: 527].</p>
+        </div>
+
+        <div class="section">
+            [cite_start]<h2 class="section-header">10 Reflection on own Learning [cite: 531]</h2>
+            [cite_start]<p>Through this project, we gained experience in applying simulation-based inference to cognitive modeling[cite: 532]. [cite_start]Key takeaways include: [cite: 532]</p>
+            <ul class="list-unstyled">
+                [cite_start]<li>• The importance of parameter identifiability diagnostics, which helped us understand where the model succeeds ($v$) and where it fails ($k, a_{0}$)[cite: 533].</li>
+                [cite_start]<li>• The trade-off between the complexity of a theoretical model and its empirical recoverability[cite: 534]. [cite_start]While exponential collapse adds psychological realism, it makes the inference more complicated[cite: 535].</li>
+                [cite_start]<li>• Practical insights into the strengths and limitations of BayesFlow, especially its ability to recover the drift rate and its struggles with more subtle boundary dynamics[cite: 536].</li>
+                [cite_start]<li>• A broader understanding of how the distinction between independent and dependent data points impacts inference implications (e.g., DeepSet vs. LSTM)[cite: 537].</li>
+            </ul>
+            [cite_start]<p>Overall, this project deepened our understanding of both decision-making models and the practical challenges of SBI, providing us with tools to refine models and inference strategies in future work[cite: 538].</p>
+        </div>
+
+        <div class="section">
+            [cite_start]<h2 class="section-header">References [cite: 539]</h2>
+            <ul class="list-unstyled">
+                <li>Katsimpokis, D., Hawkins, G. E., & van Maanen, L. (2020). Not all speed-accuracy trade-off manipulations have the same psychological effect. [cite_start]Computational Brain & Behavior, 3(3), 252-268. https://doi.org/10.1007/s42113-020-00074-y [cite: 540, 541]</li>
+                <li>Smith, P. L., & Ratcliff, R. (2024). An introduction to the diffusion model of decision-making. In B. U. Forstmann & B. M. Turner (Eds.), An introduction to model-based cognitive neuroscience (pp. 67-100). [cite_start]Springer International Publishing. https://doi.org/10.1007/978-3-031-45271-0_4 [cite: 542, 543, 544]</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
