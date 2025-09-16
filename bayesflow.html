@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulation-Based Inference with BayesFlow: A Project Guide</title>
+    <link rel="stylesheet" href="bayesflow_styles.css">
+</head>
+<body>
+    <header>
+        <h1>Simulation-Based Inference with BayesFlow</h1>
+        <p>A Practical Guide to Modeling Decision-Making</p>
+    </header>
+    <main>
+        <section class="section">
+            <h2>What is Simulation-Based Inference (SBI)?</h2>
+            <p>
+                Imagine you have a complex scientific model—maybe something that mimics how a brain makes decisions or how a star evolves. The math behind this model is so complicated that you can't write down a simple formula to figure out the best parameters (like a person's intelligence or a star's mass) from your data. That's where Simulation-Based Inference (SBI) comes in!
+            </p>
+            <p>
+                SBI is a powerful technique for estimating model parameters when the <strong>likelihood function</strong> is <strong>intractable</strong>, meaning it's impossible or very difficult to calculate[cite: 525]. Instead of relying on complex equations, SBI leverages the power of computer simulations. We simulate data from our model using a wide range of parameter values. Then, we train a machine learning algorithm—like a neural network—to learn the relationship between the parameters we used and the data that was generated. This trained network can then take real-world data and infer the most likely parameters that produced it.
+            </p>
+            <ul>
+                <li><strong>Why use SBI?</strong> For models where traditional statistical methods fail due to mathematical complexity[cite: 525].</li>
+                <li><strong>How does it work?</strong> By comparing simulated data to observed data and using machine learning to find the parameters that provide the best match.</li>
+            </ul>
+        </section>
+        <section class="section">
+            <h2>Meet BayesFlow: Your SBI Toolkit</h2>
+            <p>
+                While SBI sounds complex, tools like <strong>BayesFlow</strong> make it accessible to researchers and developers. BayesFlow is a Python library that automates the entire SBI workflow[cite: 80]. It uses a clever combination of neural networks to learn the intricate relationship between your model's parameters and the data it produces[cite: 80]. Specifically, it uses a <strong>summary network</strong> to condense trial-level data into a concise format and an <strong>inference network</strong> to transform a simple distribution into a complex <strong>posterior distribution</strong> of your parameters.
+            </p>
+            <p>
+                This modular approach is what makes BayesFlow so powerful. It handles the heavy lifting of the neural network training, allowing you to focus on your scientific model.
+            </p>
+            <p>
+                To get started, you can find the official documentation and installation instructions on the <a href="https://github.com/bayesflow-org/bayesflow/blob/main/README.md" target="_blank">BayesFlow GitHub page</a>.
+            </p>
+        </section>
+        <section class="section">
+            <h2>Understanding the Drift Diffusion Model (DDM)</h2>
+            <p>
+                In our project, we apply SBI to a classic model in cognitive science: the <strong>Drift Diffusion Model (DDM)</strong>[cite: 44]. The DDM is a type of Evidence Accumulation Model (EAM) that's central to understanding how we make decisions under time pressure[cite: 11]. It's used to explain both <strong>response times</strong> and <strong>choices</strong> in two-alternative tasks (like deciding which way a set of dots are moving)[cite: 23].
+            </p>
+            <p>
+                The core idea is simple yet elegant: a decision is a noisy process of accumulating evidence over time[cite: 45]. Think of it like a race to a finish line. Evidence for one choice pushes the "evidence accumulator" towards an upper boundary, while evidence for the other choice pushes it toward a lower boundary[cite: 52]. The moment the accumulator reaches either boundary, a decision is made.
+            </p>
+                        <p>
+                The key DDM parameters we focused on are:
+            </p>
+            <ul>
+                <li>**Drift rate ($\nu$):** This is the speed of evidence accumulation[cite: 50]. A higher drift rate means a person is accumulating evidence faster, leading to quicker and more accurate decisions[cite: 53].</li>
+                <li>**Initial boundary height ($\alpha_0$):** This represents the amount of evidence needed to make a decision[cite: 58].</li>
+                <li>**Exponential decay rate (k):** In our project, we introduced a novel **exponentially collapsing boundary**[cite: 65]. This parameter, **k**, controls how quickly the decision boundary shrinks over time, reflecting the psychological effect of urgency as a deadline approaches[cite: 57, 63].</li>
+            </ul>
+        </section>
+        <section class="section">
+            <h2>Our Project: A Deep Dive into Collapsing Boundaries</h2>
+            <p>
+                While previous work found that **linear collapsing boundaries** fit deadline conditions better than fixed ones , we wanted to investigate if an **exponentially collapsing boundary** could provide an even better fit[cite: 16]. This non-linear approach might more realistically capture how human urgency builds as time runs out[cite: 64].
+            </p>
+            <h3>Implementation Details</h3>
+            <p>
+                We used the **BayesFlow library** to implement our inference framework. The process involved:
+            </p>
+            <ol>
+                <li><strong>Statistical Modeling:</strong> We defined our DDM with three key parameters: drift rate ($\nu$), exponential decay rate (k), and initial boundary height ($\alpha_0$)[cite: 55, 56, 57, 58]. We chose **informative priors** for these parameters based on prior research to ensure stable inference[cite: 75].</li>
+                <li><strong>Approximation:</strong> BayesFlow used a **DeepSet** architecture for its summary network, which is perfect for handling trial data in any order[cite: 81]. For the inference network, we used a **FlowMatching normalizing flow model**, which is excellent at approximating complex, non-Gaussian posterior distributions[cite: 105, 106].</li>
+                <li><strong>Training:</strong> We trained the model on a pre-generated dataset of 5,000 samples to save on computation, as simulating the DDM is computationally expensive[cite: 109, 111]. The model was trained for 50 epochs[cite: 110].</li>
+            </ol>
+            <p>
+                To get a sense of how the exponential boundary works, here's the mathematical formulation:
+            </p>
+            <pre><code>$$a(t)=\alpha_{0}\cdot(1-e^{k\cdot(t_{max}-t)})$$</code></pre>
+            <p>
+                This function shows a slow decrease in the boundary height early on, followed by a sharp drop as the decision deadline ($t_{max}$) approaches[cite: 73].
+            </p>
+        </section>
+        <section class="section">
+            <h2>Key Findings and Limitations</h2>
+            <p>
+                Our results were a mix of success and challenges:
+            </p>
+            <ul>
+                <li><strong>Drift Rate Recovery:</strong> The model successfully recovered the drift rate ($\nu$), and our findings aligned with behavioral data—drift rate was highest in speed-cued conditions with deadlines[cite: 126, 127]. This confirms that SBI is effective at capturing dominant cognitive signals[cite: 522].</li>
+                <li><strong>Boundary Parameter Challenges:</strong> However, the exponential decay rate (k) and initial boundary height ($\alpha_0$) proved much more difficult to recover reliably[cite: 120, 523]. Our diagnostics showed a **weak signal** from these parameters, as their effects only become noticeable late in a trial, making them hard to distinguish from random noise[cite: 123, 134].</li>
+            </ul>
+            <p>
+                This highlights a key lesson: while complex models can add psychological realism, they can also complicate inference if the parameters are not easily identifiable from the data[cite: 534].
+            </p>
+            <p>
+                For more details on our findings, including the ground truth vs. estimate plots and posterior distributions, you can view the full project report on our GitHub.
+            </p>
+        </section>
+        <section class="section">
+            <h2>Conclusion</h2>
+            <p>
+                Our project demonstrates the incredible potential of **Simulation-Based Inference** for analyzing complex cognitive models, but also underscores the importance of **parameter identifiability**[cite: 525, 533]. Tools like BayesFlow provide a powerful framework for this work, and our findings set the stage for future research into hierarchical inference and alternative boundary formulations[cite: 527].
+            </p>
+            <p>
+                By sharing this project, we hope to provide a hands-on example of applying SBI to real-world data and inspire others to explore this exciting field of computational neuroscience and cognitive modeling.
+            </p>
+        </section>
+        <section class="section">
+            <h3>Resources & Further Reading</h3>
+            <ul>
+                <li><a href="https://bayesflow.org/" target="_blank">BayesFlow Official Website</a></li>
+                <li><a href="https://github.com/bayesflow-org/bayesflow/blob/main/README.md" target="_blank">BayesFlow Installation Guide</a></li>
+                <li><a href="https://link.springer.com/chapter/10.1007/978-3-031-45271-0_4" target="_blank">An Introduction to the Diffusion Model of Decision-Making [cite: 542]</a></li>
+                <li><a href="https://link.springer.com/article/10.1007/s42113-020-00074-y#Tab4" target="_blank">Original Research Article on Speed-Accuracy Trade-off [cite: 540]</a></li>
+            </ul>
+        </section>
+    </main>
+</body>
+</html>
