@@ -6,6 +6,8 @@
       --accent: #00c9ff;
       --accent-hover: #7f5eff;
       --header-bg: #111;
+      --header-link-bg: #333; /* New variable for header link background */
+      --header-link-text: white;
     }
     .light {
       --bg: #fafafa;
@@ -14,6 +16,8 @@
       --accent: #7f5eff;
       --accent-hover: #00c9ff;
       --header-bg: #fff;
+      --header-link-bg: #eee;
+      --header-link-text: #333;
     }
 
     /* Base styles */
@@ -35,20 +39,54 @@
       margin: 0 0 10px;
     }
 
-    /* Header */
+    /* --- Header Layout & Styles --- */
     header {
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      /* Adjusted padding/layout since header-controls now manage full layout */
+      padding: 20px;
+      display: block; /* Remove flex from header itself */
       background: var(--header-bg);
       border-bottom: 1px solid #333;
       position: sticky;
       top: 0;
       z-index: 10;
       transition: background 0.4s;
+      width: 100%;
+      box-sizing: border-box;
     }
 
+    .header-controls {
+      /* Align controls (social links and theme toggle) to the top right */
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 15px; /* Space between the social links group and the toggle button */
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 10px; /* Space between the link buttons */
+    }
+
+    .header-link {
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 1.2em;
+      font-weight: bold;
+      transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+      border: 1px solid var(--header-link-bg); 
+      
+      /* Dark/Light Mode responsiveness via variables */
+      background-color: var(--header-link-bg);
+      color: var(--header-link-text);
+    }
+
+    .header-link:hover {
+      background-color: var(--accent);
+      border-color: var(--accent);
+      color: white; /* Ensure text is white on accent hover */
+    }
+    
     header .logo {
       font-weight: bold;
       font-size: 1.2rem;
@@ -56,38 +94,51 @@
     }
 
     header .menu {
+      /* This rule might not be needed anymore due to .header-controls */
       display: flex;
       gap: 1rem;
       align-items: center;
     }
 
     .theme-toggle {
-      background: none;
-      border: 2px solid var(--text);
-      border-radius: 50%;
-      width: 36px;
-      height: 36px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      /* Updated styling for a better button look */
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 1.2em;
       cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+      border: 1px solid;
+      
+      /* Default (Dark Mode) Styles */
+      background-color: var(--header-link-bg);
       color: var(--text);
-      font-size: 1rem;
-      transition: all 0.3s ease;
+      border-color: var(--header-link-bg);
     }
-    .theme-toggle:hover {
-      background: var(--text);
-      color: var(--bg);
+    
+    .light .theme-toggle {
+      background-color: var(--header-link-bg);
+      color: var(--text);
+      border-color: var(--header-link-bg);
     }
 
-    /* Hero section */
+    .theme-toggle:hover {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+    }
+
+
+    /* --- Hero section Layout (Image and Text Side-by-Side) --- */
     .hero {
+      /* Added Flexbox to enable side-by-side layout */
+      display: flex; 
+      align-items: center; 
+      gap: 40px; 
+      text-align: left; /* Override previous center alignment */
+
       background: linear-gradient(135deg, #ff4ecd, #7f5eff, #00c9ff);
-      padding: 4rem 0;
-      border-radius: 12px;
+      padding: 4rem 4rem;
       margin: 2rem auto;
-      max-width: 1100px;
-      text-align: center;
       color: white;
       box-shadow: 0 6px 20px rgba(0,0,0,0.4);
       transition: transform 0.4s;
@@ -96,12 +147,20 @@
       transform: translateY(-5px);
     }
 
+    .hero-text {
+      /* Allows the text content to take up the remaining space */
+      flex-grow: 1;
+      min-width: 0; 
+    }
+    
     .hero h1 {
       font-size: 2rem;
+      margin-top: 0; /* Ensure no margin pushes text down */
     }
 
     .hero p {
-      margin: 1rem 0;
+      margin: 1rem 0; /* Adjusted margin for side-by-side layout */
+      font-size: 1.1rem;
     }
 
     .hero button {
@@ -119,8 +178,29 @@
       color: var(--bg);
       transform: scale(1.05);
     }
+    
+    /* --- Profile Image Styling --- */
+    .profile-pic-container {
+      flex-shrink: 0; /* Prevents the image container from shrinking */
+      width: 200px; 
+      height: 200px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 4px solid #eee; /* Kept the border from your old style */
+      box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+      background: #fff;
+      margin: 0; /* Reset margins */
+    }
+    
+    .profile-pic {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border: none; /* Removed the redundant border/shadow */
+    }
 
-    /* Sections */
+    /* --- Sections --- */
     .section {
       max-width: 1100px;
       margin: 2rem auto;
@@ -181,44 +261,32 @@
       display: block;
     }
 
+    /* --- Media Queries --- */
     @media (max-width: 1200px) {
       body > header, .hero, .section {
         max-width: 95vw;
       }
     }
-    /* Profile image circle */
-    .profile-pic-container {
-      display: flex;
-      justify-content: center;
-      margin-top: 30px;
-      margin-bottom: 10px;
-    }
-    .profile-pic {
-      width: 140px;
-      height: 140px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 4px solid #eee;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.10);
-      background: #fff;
-    }
 
-    .profile-links {
-      display: flex;
-      justify-content: center;
-      gap: 1.2rem;
-      flex-wrap: wrap;
-      margin-top: 1.2rem;
-      margin-bottom: 1.2rem;
+    @media (max-width: 768px) {
+      /* Hero Layout for Mobile */
+      .hero {
+          flex-direction: column; /* Stacks the image and text vertically */
+          text-align: center; /* Centers the text content */
+          padding: 2rem 1rem; /* Reduced padding for mobile */
+      }
+
+      .profile-pic-container {
+          margin-bottom: 20px; /* Adds space below the image when stacked */
+      }
+      
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      
+      .certificate {
+        width: 100%; /* Make certificate image responsive */
+      }
     }
-    .profile-link {
-      color: white;
-      font-weight: 500;
-      font-size: 1.08rem;
-      transition: color 0.2s, text-decoration 0.2s;
-      text-decoration: underline dotted transparent;
-    }
-    .profile-link:hover {
-      color: black;
-      text-decoration: underline solid black;
-    }
+    
+    /* Removed unused/conflicting styles: .profile-links, .profile-link */
