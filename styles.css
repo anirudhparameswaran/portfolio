@@ -366,3 +366,33 @@
         margin-top: 0; 
         margin-bottom: 0;
     }
+
+    /* --- Language Toggle Button Styles --- */
+
+    .lang-toggle {
+        /* Style consistency with theme-toggle */
+        padding: 8px 12px;
+        border-radius: 8px;
+        font-size: 1.2em;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: bold;
+        
+        /* Default (Dark Mode) Styles */
+        background-color: var(--header-link-bg);
+        color: var(--text);
+        border: 1px solid var(--header-link-bg);
+    }
+
+    .light .lang-toggle {
+        /* Light Mode Styles */
+        background-color: var(--header-link-bg);
+        color: var(--text);
+        border-color: var(--header-link-bg);
+    }
+
+    .lang-toggle:hover {
+        background: var(--accent);
+        color: white;
+        border-color: var(--accent);
+}
