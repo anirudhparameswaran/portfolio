@@ -86,7 +86,7 @@
   <h2>Awards & Recognition</h2>
     <div class="card">
       <ul>
-        <li><a class="card-link" href="https://www.dlab-tu-dortmund.de/projects/packzilla/">DLAB Best VCP Award</a></li>
+        <li><a class="card-link" href="https://www.dlab-tu-dortmund.de/projects/packzilla/">DLAB Best VCP Award</a> (TU Dortmund, 2025)</li>
         <li>Schloarship holder @ VIT Chennai (2016-2020)</li> 
         <li>1st place <a class="card-link" href="https://www.hackathon.com/event/blockchain-and-ai-hackathon-5bbb5b20dee1580004a2e416">DevMerge Pitch + AI & Blockchain Hackathon (IIT Madras, 2018)</a></li>
         <li>1st place Code Sense IoT Hackathon (VIT Chennai, 2018)</li>
@@ -96,31 +96,46 @@
     </div>
   </section>
 
-  <section class="section">
+  <!-- <section class="section">
     <h2>Certifications</h2>
     <div class="card">
       <p><strong>Fundamentals of Agents</strong> - Hugging Face</p>
       <img class = "certificate" src="assets/images/Fundamentals of Agents Certificate - Hugging Face.png?v=0" alt="Fundamentals of Agents Certificate">
+    </div>
+  </section> -->
+
+  <section class="section">
+    <h2>Certifications</h2>
+    <div class="card">
+      <div class="collapsible-header">
+        <p><strong>Fundamentals of Agents</strong> - Hugging Face <span class="toggle-icon">+</span></p>
+      </div>
+      <div class="collapsible-content">
+        <img class = "certificate" src="assets/images/Fundamentals of Agents Certificate - Hugging Face.png?v=0" alt="Fundamentals of Agents Certificate">
+      </div>
     </div>
   </section>
 
   <section class="section">
     <h2>Education</h2>
     <div class="card">
-      <ul>
-        <li><strong>Master of Science in Data Science</strong> (2024 – present) – <a class="card-link" href="https://www.tu-dortmund.de/">Technische Universität Dortmund</a></li>
-        <li><strong>Bachelor of Technology in Electronics and Computer Engineering</strong> (2016 – 2020) – <a class="card-link" href="https://vit.ac.in/">Vellore Institute of Technology</a></li>
-      </ul>
+      <strong>Master of Science in Data Science</strong> (2024 - present) - <a class="card-link" href="https://www.tu-dortmund.de/">Technische Universität Dortmund</a>
+        <p>Grade Point Average (GPA): 1,7</p>
+        <p>Deep Learning, Reinforcement Learning, Applied Bayesian Analysis, Simulation Based Inference, Statistical Network Analysis</p>
+    </div>
+    <div class="card">
+      <strong>Bachelor of Technology in Electronics and Computer Engineering</strong> (2016 – 2020) – <a class="card-link" href="https://vit.ac.in/">Vellore Institute of Technology</a>
+        <p>Cumulative Grade Point Average (CGPA): 8.62 / 10.0</p>
+        <p>Data Structures and Algorithms, Machine Learning, Statistics, Computer Networks & Architecture, Operating Systems</p>
+
     </div>
   </section>
 
   <section class="section">
     <h2>Languages</h2>
     <div class="card">
-    <ul>
-      <li>English – Native</li>
-      <li>German – A2</li>
-    </ul>
+      <p>🇬🇧 English - Native</p>
+      <p>🇩🇪 German - A2</p>
   </div>
   </section>
 
@@ -136,6 +151,33 @@
         toggle.textContent = "☀️";
       }
     });
+
+  // --- Collapsible Functionality ---
+    // --- Collapsible Functionality ---
+    const collapsibleHeader = document.querySelector('.collapsible-header');
+
+    if (collapsibleHeader) {
+      collapsibleHeader.addEventListener('click', function() {
+        // Toggle the active class on the header itself
+        this.classList.toggle('active');
+        
+        // Find the next element, which is the content
+        const content = this.nextElementSibling;
+        
+        // Find the icon element
+        const icon = this.querySelector('.toggle-icon'); 
+        
+        // Toggle the active class on the content
+        content.classList.toggle('active');
+        
+        // Change the icon based on the active state
+        if (content.classList.contains('active')) {
+            icon.textContent = '−'; // Change to minus when open
+        } else {
+            icon.textContent = '+'; // Change to plus when closed
+        }
+      });
+    }
   </script>
 
 </body>

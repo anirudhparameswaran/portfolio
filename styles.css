@@ -289,4 +289,53 @@
       }
     }
     
-    /* Removed unused/conflicting styles: .profile-links, .profile-link */
+    /* --- Collapsible Styles for Certificates --- */
+
+    .collapsible-header {
+        cursor: pointer;
+        padding: 10px 0;
+        margin-bottom: 0;
+        color: var(--text);
+        /* Make it a flex container to push the icon to the right */
+        display: flex;
+        justify-content: space-between; 
+        align-items: center;
+    }
+
+    .collapsible-header p {
+        margin: 0;
+        font-size: 1.05rem;
+        font-weight: 500;
+        /* Ensure the text itself doesn't take up the full width, allowing the icon to be pushed right */
+        flex-grow: 1; 
+    }
+
+    .collapsible-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-in-out; 
+    }
+
+    .collapsible-content.active {
+        max-height: 2000px;
+        padding-top: 10px;
+    }
+
+    .toggle-icon {
+        /* Styles for the new icon (+/-) */
+        font-size: 1.2em; /* Slightly larger for better visibility */
+        font-weight: bold;
+        margin-left: 15px; /* Add more space between text and icon */
+        transition: transform 0.3s, color 0.3s;
+    }
+
+    .collapsible-header.active .toggle-icon {
+        /* When active (open), change the '+' to a '−' */
+        content: "−"; 
+    }
+
+    /* Fix certificate image margin when inside collapsible */
+    .certificate {
+        margin-top: 0; 
+        margin-bottom: 0;
+    }
