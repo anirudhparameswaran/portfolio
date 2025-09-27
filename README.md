@@ -12,6 +12,3 @@ Welcome to my personal portfolio project! This repository contains the source co
 ## Technologies Used
 
 - HTML, CSS, JavaScript
-
-
-Feel free to customize this README to better fit your portfolio!
