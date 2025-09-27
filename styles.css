@@ -3,8 +3,8 @@
       --bg: #1a1a1a;
       --text: #e5e5e5;
       --card-bg: #262626;
-      --accent: #00c9ff;
-      --accent-hover: #7f5eff;
+      --accent: #7f5eff;
+      --accent-hover: #2936536e;
       --header-bg: #111;
       --header-link-bg: #333; /* New variable for header link background */
       --header-link-text: white;
@@ -14,7 +14,7 @@
       --text: #111;
       --card-bg: #f1f1f1;
       --accent: #7f5eff;
-      --accent-hover: #00c9ff;
+      --accent-hover: #2936536e;
       --header-bg: #fff;
       --header-link-bg: #eee;
       --header-link-text: #333;
